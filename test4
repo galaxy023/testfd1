@@ -1,7 +1,7 @@
 var xhr = new XMLHttpRequest();
 
 // Configura a requisição - método GET para uma URL de exemplo
-xhr.open('GET', 'http://localhost:3000', true);
+xhr.open('GET', 'https://ea3baf39-e1e9-4737-9c28-8a869b79c933-00-1spc09uux8b1t.riker.repl.co/', true);
 
 // Define o que fazer quando a requisição estiver concluída
 xhr.onload = function() {
