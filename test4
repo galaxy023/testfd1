@@ -14,10 +14,6 @@ console.log("sended e");
         var kp = new KeyboardEvent('keyup', { key: 'e', keyCode: 69, code: 'KeyE' });
         window.dispatchEvent(kp);
     }
-
-function mss(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
     console.log('Resposta:', xhr.responseText);
   } else {
     // Houve um erro na requisição
