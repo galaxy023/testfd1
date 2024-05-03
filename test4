@@ -1,2 +1,39 @@
-alert('ahiwhdwaud');
-console.log('git script haha');
+    fetch('https://exemplo.com/api/recurso')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao fazer a requisição GET');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Resposta da requisição GET:', data);
+        })
+        .catch(error => {
+            console.error('Erro ao fazer a requisição GET:', error);
+        });
+
+    // Enviando dados para a API usando POST
+    const dados = {
+        nome: 'Exemplo',
+        idade: 30
+    };
+
+    fetch('https://exemplo.com/api/recurso', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao enviar dados via POST');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Resposta da requisição POST:', data);
+        })
+        .catch(error => {
+            console.error('Erro ao enviar dados via POST:', error);
+        });
