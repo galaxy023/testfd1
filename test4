@@ -19,7 +19,7 @@ async function at() {
         var k = new KeyboardEvent('keydown', { key: 'e', keyCode: 69, code: 'KeyE' });
         window.dispatchEvent(k);
 console.log('sended e');
-        await mss(10);
+        await mss(0);
         var kp = new KeyboardEvent('keyup', { key: 'e', keyCode: 69, code: 'KeyE' });
         window.dispatchEvent(kp);
     }
