@@ -1,14 +1,12 @@
 var xhr = new XMLHttpRequest();
 
-// Configura a requisição - método GET para uma URL de exemplo
 xhr.open('GET', 'https://ea3baf39-e1e9-4737-9c28-8a869b79c933-00-1spc09uux8b1t.riker.repl.co/', true);
 
-// Define o que fazer quando a requisição estiver concluída
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
 var sd = false;
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'j') {
+document.addEventListener('keyup', function(e) {
+    if (e.key === window.key) {
         sd = !sd;
         at();
     }
@@ -18,7 +16,6 @@ async function at() {
     while (sd) {
         var k = new KeyboardEvent('keydown', { key: 'e', keyCode: 69, code: 'KeyE' });
         window.dispatchEvent(k);
-console.log('sended e');
         await mss(0);
         var kp = new KeyboardEvent('keyup', { key: 'e', keyCode: 69, code: 'KeyE' });
         window.dispatchEvent(kp);
@@ -28,17 +25,14 @@ console.log('sended e');
 function mss(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-    console.log('Resposta:', xhr.responseText);
+    console.log('connected');
   } else {
-    // Houve um erro na requisição
-    console.error('Erro na requisição:', xhr.statusText);
+    console.error('fetch error', xhr.statusText);
   }
 };
 
-// Define o que fazer em caso de erro na requisição
 xhr.onerror = function() {
-  console.error('Erro de conexão.');
+  alert('cant fetch');
 };
 
-// Envia a requisição
 xhr.send();
