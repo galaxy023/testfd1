@@ -6,13 +6,17 @@ xhr.open('GET', 'https://ea3baf39-e1e9-4737-9c28-8a869b79c933-00-1spc09uux8b1t.r
 // Define o que fazer quando a requisição estiver concluída
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
-        while (true) {
-console.log("sended e");
+    while (true) {
         var k = new KeyboardEvent('keydown', { key: 'e', keyCode: 69, code: 'KeyE' });
         window.dispatchEvent(k);
+        await mss(1);
         var kp = new KeyboardEvent('keyup', { key: 'e', keyCode: 69, code: 'KeyE' });
         window.dispatchEvent(kp);
     }
+
+function mss(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
     console.log('Resposta:', xhr.responseText);
   } else {
     // Houve um erro na requisição
