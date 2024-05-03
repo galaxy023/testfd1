@@ -1,39 +1,23 @@
-    fetch('https://exemplo.com/api/recurso')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao fazer a requisição GET');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Resposta da requisição GET:', data);
-        })
-        .catch(error => {
-            console.error('Erro ao fazer a requisição GET:', error);
-        });
+var xhr = new XMLHttpRequest();
 
-    // Enviando dados para a API usando POST
-    const dados = {
-        nome: 'Exemplo',
-        idade: 30
-    };
+// Configura a requisição - método GET para uma URL de exemplo
+xhr.open('GET', 'http://localhost:3000', true);
 
-    fetch('https://exemplo.com/api/recurso', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dados),
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao enviar dados via POST');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Resposta da requisição POST:', data);
-        })
-        .catch(error => {
-            console.error('Erro ao enviar dados via POST:', error);
-        });
+// Define o que fazer quando a requisição estiver concluída
+xhr.onload = function() {
+  if (xhr.status >= 200 && xhr.status < 300) {
+    // Requisição bem-sucedida, trata os dados aqui
+    console.log('Resposta:', xhr.responseText);
+  } else {
+    // Houve um erro na requisição
+    console.error('Erro na requisição:', xhr.statusText);
+  }
+};
+
+// Define o que fazer em caso de erro na requisição
+xhr.onerror = function() {
+  console.error('Erro de conexão.');
+};
+
+// Envia a requisição
+xhr.send();
