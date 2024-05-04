@@ -4,7 +4,7 @@ xhr.open('GET', 'https://ea3baf39-e1e9-4737-9c28-8a869b79c933-00-1spc09uux8b1t.r
 
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
-const url = 'https://exemplo.com/api/dados';
+const url = 'https://sao-paulo-0-alpaca.dynast.cloud:8443/';
 
 // Dados que você quer enviar (pode ser um objeto JavaScript)
 const dados = {
