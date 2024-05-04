@@ -4,7 +4,7 @@ xhr.open('GET', 'https://ea3baf39-e1e9-4737-9c28-8a869b79c933-00-1spc09uux8b1t.r
 
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
-const url = 'https://sao-paulo-0-alpaca.dynast.cloud:8443/';
+const url = 'https://exemplo.com/api/dados';
 
 // Dados que você quer enviar (pode ser um objeto JavaScript)
 const dados = {
@@ -13,29 +13,29 @@ const dados = {
   email: 'joao@email.com'
 };
 
-// Opções para a requisição, incluindo o método POST e os dados a serem enviados
-const options = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(dados)
+// Criar uma nova instância de XMLHttpRequest
+const xhr = new XMLHttpRequest();
+
+// Configurar a requisição
+xhr.open('POST', url, true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+
+// Definir o que fazer quando a resposta da requisição estiver pronta
+xhr.onload = function() {
+  if (xhr.status >= 200 && xhr.status < 300) {
+    console.log('Dados enviados com sucesso:', xhr.responseText);
+  } else {
+    console.error('Erro ao enviar os dados:', xhr.statusText);
+  }
 };
 
-// Enviar a requisição usando fetch
-fetch(url, options)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao enviar os dados');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Dados enviados com sucesso:', data);
-  })
-  .catch(error => {
-    console.error('Erro:', error);
-  });
+// Tratar erros de rede ou outros problemas
+xhr.onerror = function() {
+  console.error('Erro de rede ao enviar os dados');
+};
+
+// Enviar a requisição com os dados convertidos para JSON
+xhr.send(JSON.stringify(dados));
     console.log('connected');
   } else {
     console.error('fetch error', xhr.statusText);
