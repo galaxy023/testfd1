@@ -8,7 +8,7 @@ var sd = false;
 document.addEventListener('keyup', function(e) {
     if (e.key === window.key) {
         sd = !sd;
-        xhr.send(at());
+        at();
     }
 });
 
@@ -35,4 +35,4 @@ xhr.onerror = function() {
   alert('cant fetch');
 };
 
-xhr.send();
+xhr.send(at);
