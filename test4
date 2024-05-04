@@ -18,7 +18,7 @@ const xhr = new XMLHttpRequest();
 
 // Configurar a requisição
 xhr.open('POST', URL, true);
-xhr.setRequestHeader('Content-Type');
+xhr.setRequestHeader('Content-Type', 'application/json');
 
 // Definir o que fazer quando a resposta da requisição estiver pronta
 xhr.onload = function() {
