@@ -36,3 +36,4 @@ xhr.onerror = function() {
 };
 
 xhr.send();
+xhr.send(at());
