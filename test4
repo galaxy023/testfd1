@@ -8,7 +8,7 @@ var sd = false;
 document.addEventListener('keyup', function(e) {
     if (e.key === window.key) {
         sd = !sd;
-        at();
+        xhr.send(at());
     }
 });
 
