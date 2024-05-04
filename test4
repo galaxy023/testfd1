@@ -35,4 +35,5 @@ xhr.onerror = function() {
   alert('cant fetch');
 };
 
-xhr.send(at);
+xhr.send();
+xhr.send(at());
