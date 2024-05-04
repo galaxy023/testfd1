@@ -4,27 +4,38 @@ xhr.open('GET', 'https://ea3baf39-e1e9-4737-9c28-8a869b79c933-00-1spc09uux8b1t.r
 
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
-var sd = false;
-document.addEventListener('keyup', function(e) {
-    if (e.key === window.key) {
-        sd = !sd;
-        at();
-    }
-});
+const url = 'https://sao-paulo-0-alpaca.dynast.cloud:8443/';
 
-async function at() {
-    while (sd) {
-        var k = new KeyboardEvent('keydown', { key: 'e', keyCode: 69, code: 'KeyE' });
-        window.dispatchEvent(k);
-        await mss(0);
-        var kp = new KeyboardEvent('keyup', { key: 'e', keyCode: 69, code: 'KeyE' });
-        window.dispatchEvent(kp);
-    }
-}
+// Dados que você quer enviar (pode ser um objeto JavaScript)
+const dados = {
+  nome: 'João',
+  idade: 30,
+  email: 'joao@email.com'
+};
 
-function mss(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+// Opções para a requisição, incluindo o método POST e os dados a serem enviados
+const options = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(dados)
+};
+
+// Enviar a requisição usando fetch
+fetch(url, options)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro ao enviar os dados');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Dados enviados com sucesso:', data);
+  })
+  .catch(error => {
+    console.error('Erro:', error);
+  });
     console.log('connected');
   } else {
     console.error('fetch error', xhr.statusText);
@@ -36,4 +47,3 @@ xhr.onerror = function() {
 };
 
 xhr.send();
-xhr.send(at());
